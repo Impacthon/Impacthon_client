@@ -56,7 +56,7 @@ const Signup = () => {
         name: username,
         password: password,
       }});
-      navigate('/login');
+      navigate('/selectPosition');
     } catch (error) {
       if (error.response && error.response.status === 500) {
         alert('중복된 아이디나 이름이 있습니다.');
