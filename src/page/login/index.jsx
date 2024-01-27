@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from '../../common/Input/style';
 import { Button } from '../../common/button/style';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';  
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   return (
     <Background>
       <SigninContainer>
         <ComponentsContainer>
-            <Title>Log In</Title>
+          <Title>Log In</Title>
           <InputContainer>
             <InputContainer>
               <DataContainer>
                 <InputText>아이디</InputText>
-                <Input placeholder="아이디를 입력해주세요." />
+                <Input type="text" value={id} onChange={handleName} placeholder="아이디를 입력해주세요." />
               </DataContainer>
               <DataContainer>
                 <InputText>비밀번호</InputText>
-                <Input placeholder="비밀번호를 입력해주세요." />
-                <Icon>
+                <Input type={changePw} maxlength="16" value={password} onChange={handlePassword} placeholder="비밀번호를 입력해주세요." />
+                <Icon onClick={checkPassword}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
                     <g clip-path="url(#clip0_50_112)">
                       <path
@@ -37,12 +38,10 @@ const Login = () => {
               </DataContainer>
             </InputContainer>
           </InputContainer>
-          <Button>로그인</Button>
+          <Button onClick={handleLogin}>로그인</Button>
           <SignupContainer>
             <SignupText>계정이 없으신가요?</SignupText>
-            <StyledLink to="/signup">
-            회원가입
-            </StyledLink>
+            <StyledLink to="/signup">회원가입</StyledLink>
           </SignupContainer>
         </ComponentsContainer>
       </SigninContainer>
@@ -64,13 +63,13 @@ export const Background = styled.div`
 
 export const SigninContainer = styled.div`
   width: 500px;
-  height: 600px;  
+  height: 600px;
   background: #fff;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0);
 `;
 
 export const ComponentsContainer = styled.div`
@@ -164,4 +163,4 @@ export const StyledLink = styled(Link)`
     cursor: pointer;
     text-decoration: underline;
   }
-`
+`;
