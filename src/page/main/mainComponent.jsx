@@ -1,23 +1,39 @@
 import styled from "styled-components";
 import { default as line } from "../main/Line.svg";
 import { default as componentImg } from "../main/componentImg.svg";
-
-const MainComponents = () => {
+import {default as price} from "../header/Price.svg"
+const MainComponents = ({ myname, gender, introduce, tag }) => {
   return (
     <Container>
-      <MainImg src={componentImg} />
+      <img src={componentImg} />
       <Div>
-        <Name>김한비</Name>
-        <LineIcon src={line} />
-        <Gender>여</Gender>
+        <Name>{myname}</Name>
+        <img src={line} />
+        <Gender>{gender}</Gender>
+
+        <MoneyLayer>
+<img src={price}/>
+<Money>1000</Money>
+        </MoneyLayer>
       </Div>
-      <Introduce>목포 맛집잘알</Introduce>
+      <Introduce>{introduce}</Introduce>
       <HashLayer>
-        <HashTag>#목포</HashTag>
+        <HashTag>{tag}</HashTag>
       </HashLayer>
     </Container>
   );
 };
+
+const MoneyLayer=styled.div`
+display: flex;
+`
+const Money=styled.div`
+  color: #000;
+font-family: Pretendard;
+font-size: 16px;
+font-weight: 400;
+margin-top: 3px;
+`
 
 const HashLayer = styled.div`
   display: flex;
@@ -41,7 +57,18 @@ const HashTag = styled.div`
   margin-top: 20px;
 `;
 
-const LineIcon = styled.img``;
+const Container=styled.div`
+margin-right: auto;
+background: #ffff;
+height: 350px;
+border-radius: 8px;
+&:hover{
+  background: #F7F7F7;
+    transition: all 0.3s;
+}
+
+`
+
 const Introduce = styled.div`
   color: #000;
   font-family: Pretendard;
@@ -49,9 +76,6 @@ const Introduce = styled.div`
   font-weight: 600;
   line-height: 160%;
   margin-top: 6px;
-`;
-const Container = styled.div`
-
 `;
 const MainImg = styled.img``;
 const Div = styled.div`
@@ -72,6 +96,7 @@ const Gender = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 160%;
+  color: #0a40de;
 `;
 
 export default MainComponents;

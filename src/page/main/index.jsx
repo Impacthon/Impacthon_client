@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../header";
 import MainComponents from "./mainComponent";
 import { SearchIcon } from "react-router-dom";
+import { ProfileList } from "../constance";
 
 const Main = () => {
   return (
@@ -16,22 +17,20 @@ const Main = () => {
         </SubTitle>
         <SearchLayer>
           <Input placeholder="어떤 여행을 원하시나요?" />
-          <HashLayer>
-            <HashTag>#목포</HashTag>
-          </HashLayer>
         </SearchLayer>
-
         <MainLayer>
-          <MainComponents />
+          {ProfileList.map((item, idx) => (
+            <MainComponents key={idx} {...item} />
+          ))}
         </MainLayer>
       </Container>
     </>
   );
 };
 
-const SearchLayer=styled.div`
-display: flex;
-`
+const SearchLayer = styled.div`
+  display: flex;
+`;
 const HashLayer = styled.div`
   display: flex;
   text-align: center;
