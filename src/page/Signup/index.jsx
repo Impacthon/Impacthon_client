@@ -51,14 +51,14 @@ const Signup = () => {
       return;
     }
     try {
-      await API.post(`/register`, null, {
-        params: {
-          user_id: id,
-          name: username,
-          password: password,
-        },
-      });
-      navigate("/selectPosition");
+      await API.post(`/register`, null, {params: {
+        user_id: id,
+        name: username,
+        password: password,
+      }});
+      localStorage.setItem('id',id)
+      navigate('/selectPosition');
+
     } catch (error) {
       if (error.response && error.response.status === 500) {
         alert("중복된 아이디나 이름이 있습니다.");

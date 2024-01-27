@@ -2,10 +2,35 @@ import React, { useState, useEffect } from 'react';
 
 import { Button } from '../../../common/button/style';
 import styled from 'styled-components';
-
-import { Link } from 'react-router-dom';
+import { API } from '../../../api';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProfileDataGuid = () => {
+  const navigate = useNavigate();
+  const id = localStorage.getItem('id');
+  const province = localStorage.getItem('Guidelocal');
+  const style = localStorage.getItem('style');
+  const description = localStorage.getItem('memo');
+
+  const handleSignup = async () => {
+    try {
+      await API.post(`/register/expert`, null, {
+        params: {
+          user_id: id,
+          province: province,
+          style: style,
+          description: description,
+        },
+      });
+      navigate('/login');
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        alert('중복된 아이디나 이름이 있습니다.');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    }
+  };
   return (
     <Background>
       <SigninContainer>
@@ -44,7 +69,7 @@ const ProfileDataGuid = () => {
         </TextContainer>
         <ButtonContainer>
           <Link to="/login">
-            <AfterButton>회원가입</AfterButton>
+            <AfterButton onClick={handleSignup}>회원가입</AfterButton>
           </Link>
         </ButtonContainer>
       </SigninContainer>
@@ -156,6 +181,7 @@ export const AfterButton = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  cursor: pointer;
 `;
 
 export const Input = styled.input`

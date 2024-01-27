@@ -2,8 +2,34 @@ import React, { useState, useEffect } from 'react';
 
 import { Button } from '../../../common/button/style';
 import styled from 'styled-components';
+import axios from 'axios';
+import { API } from '../../../api';
+import { useNavigate } from 'react-router-dom';
+
 
 const ProfileDataTraveler = () => {
+  const navigate = useNavigate();
+  const id = localStorage.getItem('id')
+  const gender = localStorage.getItem('gender')
+  const age = localStorage.getItem('age')
+  const area = localStorage.getItem('Travellocal')
+  const handleSignup = async () => {
+    try {
+      await API.post(`/register/traveler`, null, {params: {
+        user_id:id,
+        gender:gender,
+        age:age,
+        area:area
+      }});
+      navigate('/login');
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        alert('중복된 아이디나 이름이 있습니다.');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    }
+  }
   return (
     <Background>
       <SigninContainer>
@@ -41,7 +67,7 @@ const ProfileDataTraveler = () => {
           </Svg>
         </TextContainer>
         <ButtonContainer>
-          <AfterButton>회원가입</AfterButton>
+          <AfterButton onClick={handleSignup}>회원가입</AfterButton>
         </ButtonContainer>
       </SigninContainer>
     </Background>
@@ -79,6 +105,7 @@ export const TextContainer = styled.div`
   justify-content: center;
   gap: 16px;
   align-items: center;
+  margin-top:76px;
 `;
 
 export const Title = styled.p`
@@ -142,6 +169,7 @@ export const AfterButton = styled.button`
   align-items: center;
   gap: 10px;
   border: none;
+  cursor: pointer;
 
   border-radius: 4px;
   background: var(--Foundation-LP_DarkBlue-Normal, #0a40de);
