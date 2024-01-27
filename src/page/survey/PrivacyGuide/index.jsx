@@ -1,14 +1,40 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
 
 const Privacyadmin = () => {
 
   const backbutton = ()=>{
     window.history.go(-1);  
   }
+  const [memo, setMemo] = useState('')
+  const [style, setStyle] = useState('')
+  const [local, setLocal] = useState('')
+
+  const Local = (e) => {
+    setLocal(e.target.value)
+  }
+  const Style = (e) => {
+    setStyle(e.target.value)
+    
+  }
+  const Memo = (e) => {
+    setMemo(e.target.value)
+  }
+
+  const navigate = useNavigate();
+  
+  const Button = () => {
+    localStorage.setItem('Guidelocal', local)
+    localStorage.setItem('memo', memo)
+    localStorage.setItem('style', style)
+    navigate('/ProfileDataGuid')
+  }
+
   return (
+    
     <Background>
       <SigninContainer>
         <TextContainer>
@@ -49,26 +75,24 @@ const Privacyadmin = () => {
           <InputText>
           지역
           </InputText>
-          <Input placeholder='John Doe'></Input>
+          <Input onChange={Local} value={local} placeholder='John Doe'></Input>
         </DataContainer>
         <DataContainer>
           <InputText>
           여행 스타일
           </InputText>
-          <Input placeholder='johndoe@mail.com'></Input>
+          <Input onChange={Style} value={style} placeholder='johndoe@mail.com'></Input>
         </DataContainer>
         <DataContainer>
           <InputText>
-          실명
+          설명
           </InputText>
-          <Input placeholder='********'></Input>
+          <Input onChange={Memo} value={memo} placeholder='********'></Input>
         </DataContainer>
         </InputContainer>
         <ButtonContainer>
           <BeforeButton onClick={backbutton}>이전</BeforeButton>
-          <Link to='/ProfileDataGuid'>
-          <AfterButton>다음</AfterButton>
-          </Link>
+          <AfterButton onClick={Button}>다음</AfterButton>
         </ButtonContainer>
       </SigninContainer>
     </Background>

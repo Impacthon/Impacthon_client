@@ -1,13 +1,36 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const PrivacyTraveler = () => {
   const backbutton = ()=>{
     window.history.go(-1);  
   }
+  const [male, setMale] = useState('')
+  const [age, setAge] = useState('')
+  const [local, setLocal] = useState('')
+
+  const navigate = useNavigate();
+
+  const Male = (e) => {
+    setMale(e.target.value)
+    
+  }
+  const Age = (e) => {
+    setAge(e.target.value)
+  }
+  const Local = (e) => {
+    setLocal(e.target.value)
+  }
+  const Button = () => {
+    localStorage.setItem('Travellocal', local)
+    localStorage.setItem('age', age)
+    localStorage.setItem('male', male)
+    navigate('/ProfileDataTraveler')
+  }
   return (
+    
     <Background>
       <SigninContainer>
         <TextContainer>
@@ -46,22 +69,23 @@ const PrivacyTraveler = () => {
         <InputContainer>
           <DataContainer>
             <InputText>성별</InputText>
-            <Input placeholder="Male"></Input>
+            <Input onChange={Male} value={male} placeholder="Male"></Input>
           </DataContainer>
           <DataContainer>
             <InputText>나이</InputText>
-            <Input placeholder="19"></Input>
+            <Input onChange={Age} value={age} placeholder="19"></Input>
           </DataContainer>
           <DataContainer>
             <InputText>주거 지역</InputText>
-            <Input placeholder="Seoul"></Input>
+            <Input onChange={Local} value={local} placeholder="Seoul"></Input>
           </DataContainer>
         </InputContainer>
         <ButtonContainer>
           <BeforeButton onClick={backbutton}>이전</BeforeButton>
-          <Link to="/ProfileDataTraveler">
+          {/* <Link to="/ProfileDataTraveler">
             <AfterButton>다음</AfterButton>
-          </Link>
+          </Link> */}
+          <AfterButton onClick={Button}>다음</AfterButton>
         </ButtonContainer>
       </SigninContainer>
     </Background>

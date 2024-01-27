@@ -56,6 +56,7 @@ const Signup = () => {
         name: username,
         password: password,
       }});
+      localStorage.setItem('id',id)
       navigate('/selectPosition');
     } catch (error) {
       if (error.response && error.response.status === 500) {

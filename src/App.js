@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <GlobalStyles />
       {/* <Point/> */}
-      <Router>
+      <Router>  
         <Routes>
           <Route path="/login" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
