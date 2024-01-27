@@ -1,9 +1,70 @@
-import React from 'react';
 import { Input } from '../../common/Input/style';
 import { Button } from '../../common/button/style';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { API } from '../../api';
 const Signup = () => {
+  const [username, setUsername] = useState('');
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [checkPw, setCheckPw] = useState('');
+  const [changePw, setChangePw] = useState('password');
+  const [idValid, setIdValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+
+  const navigate = useNavigate();
+
+  const userNameChange = (e) => {
+    setUsername(e.target.value);
+  };
+  const idChange = (e) => {
+    setId(e.target.value);
+    const regex = /^.{3,16}$/;
+    if (regex.test(id)) {
+      setIdValid(true);
+    } else {
+      setIdValid(false);
+    }
+  };
+  const passwordChange = (e) => {
+    setPassword(e.target.value);
+    const regex = new RegExp(/^.{7,16}$/);
+    if (regex.test(password)) {
+      setPasswordValid(true);
+    } else {
+      setPasswordValid(false);
+    }
+  };
+  const CheckPw = (e) => {
+    setCheckPw(e.target.value);
+  };
+  const checkPassword = (e) => {
+    if (changePw === 'password') {
+      setChangePw('text');
+    } else setChangePw('password');
+  };
+  const SignupButton = async () => {
+    if (password !== checkPw) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+    try {
+      await API.post(`/register`, null, {params: {
+        user_id: id,
+        name: username,
+        password: password,
+      }});
+      navigate('/login');
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        alert('중복된 아이디나 이름이 있습니다.');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    }
+  };
   return (
     <Background>
       <SigninContainer>
@@ -15,16 +76,16 @@ const Signup = () => {
             <InputContainer>
               <DataContainer>
                 <InputText>이름</InputText>
-                <Input placeholder="이름 입력해주세요." />
+                <Input onChange={userNameChange} value={username} placeholder="이름 입력해주세요." />
               </DataContainer>
               <DataContainer>
                 <InputText>아이디</InputText>
-                <Input placeholder="아이디 입력해주세요." />
+                <Input onChange={idChange} value={id} placeholder="아이디 입력해주세요." />
               </DataContainer>
               <DataContainer>
                 <InputText>비밀번호</InputText>
-                <Input placeholder="비밀번호 입력해주세요." />
-                <Icon>
+                <Input type={changePw} onChange={passwordChange} value={password} maxlength="36" placeholder="비밀번호 입력해주세요." />
+                <Icon onClick={checkPassword}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
                     <g clip-path="url(#clip0_50_112)">
                       <path
@@ -38,12 +99,12 @@ const Signup = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                </Icon> 
+                </Icon>
               </DataContainer>
               <DataContainer>
                 <InputText>비밀번호 확인</InputText>
-                <Input placeholder="비밀번호 입력해주세요." />
-                <Icon>
+                <Input type="password" onChange={CheckPw} value={checkPw} placeholder="비밀번호 입력해주세요." />
+                <Icon onClick={checkPassword}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
                     <g clip-path="url(#clip0_50_112)">
                       <path
@@ -60,11 +121,11 @@ const Signup = () => {
                 </Icon>
               </DataContainer>
             </InputContainer>
-            <SignupContainer>
-            <SignupLink>다음으로 넘어가기</SignupLink>
-          </SignupContainer>
+            {/* <SignupContainer>
+              <SignupLink>다음으로 넘어가기</SignupLink>
+            </SignupContainer> */}
           </InputContainer>
-          <Button>회원가입</Button>
+          <Button onClick={SignupButton}>회원가입</Button>
         </ComponentsContainer>
       </SigninContainer>
     </Background>
@@ -85,7 +146,7 @@ export const Background = styled.div`
 
 export const SigninContainer = styled.div`
   width: 550px;
-  height: 700px;  
+  height: 700px;
   background: #fff;
   border-radius: 10px;
   display: flex;

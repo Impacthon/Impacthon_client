@@ -1,10 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from '../../common/Input/style';
 import { Button } from '../../common/button/style';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';  
+import { Link, useNavigate } from 'react-router-dom';  
+import axios from 'axios';
 
 const Signin = () => {
+
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [idValid, setIdNameValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [notAllow, setNotAllow] = useState(true);
+  const [changePw, setChangePw] = useState('password');
+
+  const navigate = useNavigate();
+
+  const handleName = (e) => {
+    setId(e.target.value);
+    const regex = /^.{3,16}$/;
+    if (regex.test(id)) {
+      setIdNameValid(true);
+    } else {
+      setIdNameValid(false);
+    }
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    const regex = new RegExp(/^.{7,16}$/);
+    if (regex.test(password)) {
+      setPasswordValid(true);
+    } else {
+      setPasswordValid(false);
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      const { data } = await axios.post(`${process.env.REACT_APP_SIGNIN_API}/login`, {
+        id,
+        password,
+      });
+      localStorage.setItem('accessToken', data);
+      localStorage.setItem('username', id);
+      navigate('/');
+    } catch (e) {
+      alert('올바른 아이디와 비밀번호를 입력해주세요.');
+    }
+  };
+
+  const checkPassword = (e) => {
+    if (changePw === 'password') {
+      setChangePw('text');
+    } else setChangePw('password');
+  };
+  useEffect(() => {
+    if (idValid && passwordValid) {
+      setNotAllow(false);
+      return;
+    }
+    setNotAllow(true);
+  }, [idValid, passwordValid]);
   return (
     <Background>
       <SigninContainer>
@@ -14,12 +70,12 @@ const Signin = () => {
             <InputContainer>
               <DataContainer>
                 <InputText>아이디</InputText>
-                <Input placeholder="아이디를 입력해주세요." />
+                <Input type="text" value={id} onChange={handleName} placeholder="아이디를 입력해주세요." />
               </DataContainer>
               <DataContainer>
                 <InputText>비밀번호</InputText>
-                <Input placeholder="비밀번호를 입력해주세요." />
-                <Icon>
+                <Input type={changePw} maxlength="16" value={password} onChange={handlePassword} placeholder="비밀번호를 입력해주세요." />
+                <Icon onClick={checkPassword}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
                     <g clip-path="url(#clip0_50_112)">
                       <path
@@ -37,7 +93,7 @@ const Signin = () => {
               </DataContainer>
             </InputContainer>
           </InputContainer>
-          <Button>로그인</Button>
+          <Button disabled={notAllow} onClick={handleLogin}>로그인</Button>
           <SignupContainer>
             <SignupText>계정이 없으신가요?</SignupText>
             <StyledLink to="/signup">
@@ -70,7 +126,7 @@ export const SigninContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.);
 `;
 
 export const ComponentsContainer = styled.div`
