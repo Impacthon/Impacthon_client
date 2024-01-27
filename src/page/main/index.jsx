@@ -7,7 +7,6 @@ import { ProfileList } from "../constance";
 const Main = () => {
   return (
     <>
-      <Header />
       <Container>
         <Title>“로픽, 여행 계획이 고민이라면?”</Title>
         <SubTitle>
@@ -56,6 +55,9 @@ const HashTag = styled.div`
 
 const MainLayer = styled.div`
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
 `;
 const Container = styled.div`
   padding: 0 160px;

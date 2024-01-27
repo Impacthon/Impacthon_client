@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { default as line } from "../main/Line.svg";
 import { default as componentImg } from "../main/componentImg.svg";
-import {default as price} from "../header/Price.svg"
+import { default as price } from "../header/Price.svg";
 const MainComponents = ({ myname, gender, introduce, tag }) => {
   return (
     <Container>
@@ -12,8 +12,8 @@ const MainComponents = ({ myname, gender, introduce, tag }) => {
         <Gender>{gender}</Gender>
 
         <MoneyLayer>
-<img src={price}/>
-<Money>1000</Money>
+          <img src={price} />
+          <Money>1000</Money>
         </MoneyLayer>
       </Div>
       <Introduce>{introduce}</Introduce>
@@ -24,16 +24,16 @@ const MainComponents = ({ myname, gender, introduce, tag }) => {
   );
 };
 
-const MoneyLayer=styled.div`
-display: flex;
-`
-const Money=styled.div`
+const MoneyLayer = styled.div`
+  display: flex;
+`;
+const Money = styled.div`
   color: #000;
-font-family: Pretendard;
-font-size: 16px;
-font-weight: 400;
-margin-top: 3px;
-`
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 3px;
+`;
 
 const HashLayer = styled.div`
   display: flex;
@@ -57,17 +57,16 @@ const HashTag = styled.div`
   margin-top: 20px;
 `;
 
-const Container=styled.div`
-margin-right: auto;
-background: #ffff;
-height: 350px;
-border-radius: 8px;
-&:hover{
-  background: #F7F7F7;
+const Container = styled.div`
+  margin-right: auto;
+  background: #ffff;
+  height: 350px;
+  border-radius: 8px;
+  &:hover {
+    background: #f7f7f7;
     transition: all 0.3s;
-}
-
-`
+  }
+`;
 
 const Introduce = styled.div`
   color: #000;

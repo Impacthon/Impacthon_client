@@ -65,6 +65,7 @@ const Container = styled.div`
   display: flex;
   text-align: center;
   margin-bottom: 61px;
+  width: calc(100vw - 320px);
 `;
 
 const Div = styled.div`

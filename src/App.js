@@ -10,6 +10,9 @@ import ProfileDataGuid from "./page/survey/ProfileDataGuid";
 import ProfileDataTraveler from "./page/survey/ProfileDataTraveler";
 import Point from "./page/point";
 import Header from "./page/header/index";
+import Main from "./page/main";
+import { Layout } from "./common/layout";
+import { Detail } from "./page/detail";
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
           <Route path="/Privacyadmin" element={<Privacyadmin />} />
           <Route path="/PrivacyTraveler" element={<PrivacyTraveler />} />
           <Route path="/ProfileDataGuid" element={<ProfileDataGuid />} />
-          <Route path="/" element={<Header />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Main />} />
+            <Route path="/:id" element={<Detail />} />
+          </Route>
           <Route
             path="/ProfileDataTraveler"
             element={<ProfileDataTraveler />}
