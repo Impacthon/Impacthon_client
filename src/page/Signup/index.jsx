@@ -41,13 +41,13 @@ const Signup = () => {
     setCheckPw(e.target.value);
   };
   const checkPassword = (e) => {
-    if (changePw === 'password') {
-      setChangePw('text');
-    } else setChangePw('password');
+    if (changePw === "password") {
+      setChangePw("text");
+    } else setChangePw("password");
   };
   const SignupButton = async () => {
     if (password !== checkPw) {
-      alert('비밀번호가 일치하지 않습니다.');
+      alert("비밀번호가 일치하지 않습니다.");
       return;
     }
     try {
@@ -58,11 +58,12 @@ const Signup = () => {
       }});
       localStorage.setItem('id',id)
       navigate('/selectPosition');
+
     } catch (error) {
       if (error.response && error.response.status === 500) {
-        alert('중복된 아이디나 이름이 있습니다.');
+        alert("중복된 아이디나 이름이 있습니다.");
       } else {
-        alert('회원가입에 실패했습니다.');
+        alert("회원가입에 실패했습니다.");
       }
     }
   };
@@ -77,17 +78,37 @@ const Signup = () => {
             <InputContainer>
               <DataContainer>
                 <InputText>이름</InputText>
-                <Input onChange={userNameChange} value={username} placeholder="이름 입력해주세요." />
+                <Input
+                  onChange={userNameChange}
+                  value={username}
+                  placeholder="이름 입력해주세요."
+                />
               </DataContainer>
               <DataContainer>
                 <InputText>아이디</InputText>
-                <Input onChange={idChange} value={id} placeholder="아이디 입력해주세요." />
+                <Input
+                  onChange={idChange}
+                  value={id}
+                  placeholder="아이디 입력해주세요."
+                />
               </DataContainer>
               <DataContainer>
                 <InputText>비밀번호</InputText>
-                <Input type={changePw} onChange={passwordChange} value={password} maxlength="36" placeholder="비밀번호 입력해주세요." />
+                <Input
+                  type={changePw}
+                  onChange={passwordChange}
+                  value={password}
+                  maxlength="36"
+                  placeholder="비밀번호 입력해주세요."
+                />
                 <Icon onClick={checkPassword}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="22"
+                    viewBox="0 0 24 22"
+                    fill="none"
+                  >
                     <g clip-path="url(#clip0_50_112)">
                       <path
                         d="M12.0009 1.33331C8.63424 1.33331 5.93841 2.86665 3.97591 4.69165C2.02591 6.49998 0.721745 8.66665 0.105078 10.1541C-0.0324219 10.4833 -0.0324219 10.85 0.105078 11.1791C0.721745 12.6666 2.02591 14.8333 3.97591 16.6416C5.93841 18.4666 8.63424 20 12.0009 20C15.3676 20 18.0634 18.4666 20.0259 16.6416C21.9759 14.8291 23.2801 12.6666 23.9009 11.1791C24.0384 10.85 24.0384 10.4833 23.9009 10.1541C23.2801 8.66665 21.9759 6.49998 20.0259 4.69165C18.0634 2.86665 15.3676 1.33331 12.0009 1.33331ZM18.0009 10.6666C18.0009 13.9791 15.3134 16.6666 12.0009 16.6666C8.68841 16.6666 6.00091 13.9791 6.00091 10.6666C6.00091 7.35415 8.68841 4.66665 12.0009 4.66665C15.3134 4.66665 18.0009 7.35415 18.0009 10.6666ZM12.0009 7.99998C12.0009 9.47081 10.8051 10.6666 9.33425 10.6666C8.85508 10.6666 8.40508 10.5416 8.01758 10.3166C8.00924 10.4333 8.00091 10.5458 8.00091 10.6666C8.00091 12.875 9.79258 14.6666 12.0009 14.6666C14.2092 14.6666 16.0009 12.875 16.0009 10.6666C16.0009 8.45831 14.2092 6.66665 12.0009 6.66665C11.8842 6.66665 11.7676 6.67081 11.6509 6.68331C11.8717 7.07081 12.0009 7.52081 12.0009 7.99998Z"
@@ -104,9 +125,20 @@ const Signup = () => {
               </DataContainer>
               <DataContainer>
                 <InputText>비밀번호 확인</InputText>
-                <Input type="password" onChange={CheckPw} value={checkPw} placeholder="비밀번호 입력해주세요." />
+                <Input
+                  type="password"
+                  onChange={CheckPw}
+                  value={checkPw}
+                  placeholder="비밀번호 입력해주세요."
+                />
                 <Icon onClick={checkPassword}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="22"
+                    viewBox="0 0 24 22"
+                    fill="none"
+                  >
                     <g clip-path="url(#clip0_50_112)">
                       <path
                         d="M12.0009 1.33331C8.63424 1.33331 5.93841 2.86665 3.97591 4.69165C2.02591 6.49998 0.721745 8.66665 0.105078 10.1541C-0.0324219 10.4833 -0.0324219 10.85 0.105078 11.1791C0.721745 12.6666 2.02591 14.8333 3.97591 16.6416C5.93841 18.4666 8.63424 20 12.0009 20C15.3676 20 18.0634 18.4666 20.0259 16.6416C21.9759 14.8291 23.2801 12.6666 23.9009 11.1791C24.0384 10.85 24.0384 10.4833 23.9009 10.1541C23.2801 8.66665 21.9759 6.49998 20.0259 4.69165C18.0634 2.86665 15.3676 1.33331 12.0009 1.33331ZM18.0009 10.6666C18.0009 13.9791 15.3134 16.6666 12.0009 16.6666C8.68841 16.6666 6.00091 13.9791 6.00091 10.6666C6.00091 7.35415 8.68841 4.66665 12.0009 4.66665C15.3134 4.66665 18.0009 7.35415 18.0009 10.6666ZM12.0009 7.99998C12.0009 9.47081 10.8051 10.6666 9.33425 10.6666C8.85508 10.6666 8.40508 10.5416 8.01758 10.3166C8.00924 10.4333 8.00091 10.5458 8.00091 10.6666C8.00091 12.875 9.79258 14.6666 12.0009 14.6666C14.2092 14.6666 16.0009 12.875 16.0009 10.6666C16.0009 8.45831 14.2092 6.66665 12.0009 6.66665C11.8842 6.66665 11.7676 6.67081 11.6509 6.68331C11.8717 7.07081 12.0009 7.52081 12.0009 7.99998Z"

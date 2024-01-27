@@ -6,21 +6,34 @@ import { default as price } from "../header/Price.svg";
 const Header = () => {
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("accessToken");
+
   return (
     <Container>
       <Logo onClick={() => navigate("/main")} src={logo} alt="" />
       <Div>
-        {/* <LoginBtn onClick={()=>{navigate("/login")}} >로그인</LoginBtn>
-        <SignUpBtn onClick={()=>navigate("/signup")}>회원가입</SignUpBtn> */}
-        <Info>김한비 | 여행객</Info>
-        <img src={price} />
-        <Money>2000</Money>
+        {token ? (
+          <>
+            <Info>김한비 | 여행객</Info>
+            <img src={price} />
+            <Money>2000</Money>
+          </>
+        ) : (
+          <>
+            <LoginBtn
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              로그인
+            </LoginBtn>
+            <SignUpBtn onClick={() => navigate("/signup")}>회원가입</SignUpBtn>
+          </>
+        )}
       </Div>
     </Container>
   );
 };
-
-
 
 const Money = styled.div`
   color: #000;
@@ -52,6 +65,7 @@ const Container = styled.div`
   display: flex;
   text-align: center;
   margin-bottom: 61px;
+  width: calc(100vw - 320px);
 `;
 
 const Div = styled.div`
