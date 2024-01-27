@@ -1,20 +1,20 @@
-import { Input } from '../../common/Input/style';
-import { Button } from '../../common/button/style';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import axios from 'axios';
-import { API } from '../../api';
-const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const [checkPw, setCheckPw] = useState('');
-  const [changePw, setChangePw] = useState('password');
-  const [idValid, setIdValid] = useState(false);
-  const [passwordValid, setPasswordValid] = useState(false);
+// import { Input } from '../../common/Input/style';
+// import { Button } from '../../common/button/style';
+// import styled from 'styled-components';
+// import { useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
+// import axios from 'axios';
+// import { API } from '../../api';
+// const Signup = () => {
+//   const [username, setUsername] = useState('');
+//   const [id, setId] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [checkPw, setCheckPw] = useState('');
+//   const [changePw, setChangePw] = useState('password');
+//   const [idValid, setIdValid] = useState(false);
+//   const [passwordValid, setPasswordValid] = useState(false);
 
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
   const userNameChange = (e) => {
     setUsername(e.target.value);
@@ -132,122 +132,122 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+// export default SignUp;
 
-export const Background = styled.div`
-  height: 100vh;
-  background: var(--Gray-Gray-50, #fbfbfb);
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  place-items: center;
-  overflow-y: hidden;
-`;
+// export const Background = styled.div`
+//   height: 100vh;
+//   background: var(--Gray-Gray-50, #fbfbfb);
+//   display: grid;
+//   justify-content: center;
+//   align-items: center;
+//   place-items: center;
+//   overflow-y: hidden;
+// `;
 
-export const SigninContainer = styled.div`
-  width: 550px;
-  height: 700px;
-  background: #fff;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
-`;
+// export const SigninContainer = styled.div`
+//   width: 550px;
+//   height: 700px;
+//   background: #fff;
+//   border-radius: 10px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+// `;
 
-export const ComponentsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 45px;
-`;
+// export const ComponentsContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   gap: 45px;
+// `;
 
-export const TitleContainer = styled.div``;
+// export const TitleContainer = styled.div``;
 
-export const Title = styled.p`
-  color: #000;
-  font-family: 'Pretendard';
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 30px; /* 75% */
-  margin: 0;
-`;
+// export const Title = styled.p`
+//   color: #000;
+//   font-family: 'Pretendard';
+//   font-size: 40px;
+//   font-style: normal;
+//   font-weight: 800;
+//   line-height: 30px; /* 75% */
+//   margin: 0;
+// `;
 
-export const InputContainer = styled.div`
-  justify-content: center;
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  position: relative;
-`;
+// export const InputContainer = styled.div`
+//   justify-content: center;
+//   align-items: flex-start;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 40px;
+//   position: relative;
+// `;
 
-export const DataContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-`;
+// export const DataContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 4px;
+//   position: relative;
+// `;
 
-export const InputText = styled.p`
-  color: #212121;
-  font-family: Pretendard;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-`;
+// export const InputText = styled.p`
+//   color: #212121;
+//   font-family: Pretendard;
+//   font-size: 15px;
+//   font-style: normal;
+//   font-weight: 600;
+//   line-height: normal;
+//   margin: 0;
+// `;
 
-export const Icon = styled.div`
-  position: absolute;
-  top: 33px;
-  right: 20px;
-  cursor: pointer;
-`;
+// export const Icon = styled.div`
+//   position: absolute;
+//   top: 33px;
+//   right: 20px;
+//   cursor: pointer;
+// `;
 
-export const Img = styled.img`
-  width: 1120px;
-  height: 1084px;
-  flex-shrink: 0;
+// export const Img = styled.img`
+//   width: 1120px;
+//   height: 1084px;
+//   flex-shrink: 0;
 
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
-  filter: blur(5px);
-`;
+//   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+//   filter: blur(5px);
+// `;
 
-export const SignupContainer = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`;
+// export const SignupContainer = styled.div`
+//   display: flex;
+//   gap: 10px;
+//   align-items: center;
+// `;
 
-export const SignupText = styled.p`
-  color: var(--Gray-Black, #000);
+// export const SignupText = styled.p`
+//   color: var(--Gray-Black, #000);
 
-  /* Regular 14 */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 22.4px */
-`;
+//   /* Regular 14 */
+//   font-family: Pretendard;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: 160%; /* 22.4px */
+// `;
 
-export const SignupLink = styled.p`
-  color: var(--Primary-Blue-Primary, #0f75f8);
-  text-align: center;
-  /* Regular 16 */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 160%; /* 25.6px */
-  margin: 0;
-  position: absolute;
-  right: 5px;
+// export const SignupLink = styled.p`
+//   color: var(--Primary-Blue-Primary, #0f75f8);
+//   text-align: center;
+//   /* Regular 16 */
+//   font-family: Pretendard;
+//   font-size: 16px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: 160%; /* 25.6px */
+//   margin: 0;
+//   position: absolute;
+//   right: 5px;
 
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
+//   &:hover {
+//     cursor: pointer;
+//     text-decoration: underline;
+//   }
+// `;
