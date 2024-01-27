@@ -3,7 +3,7 @@ import { Input } from '../../common/Input/style';
 import { Button } from '../../common/button/style';
 import styled from 'styled-components';
 
-const Signup = () => {
+const SignUp = () => {
   return (
     <Background>
       <SigninContainer>
@@ -71,7 +71,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
 
 export const Background = styled.div`
   height: 100vh;
