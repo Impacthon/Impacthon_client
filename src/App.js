@@ -26,7 +26,7 @@ function App() {
           <Route path="/ProfileDataTraveler" element={<ProfileDataTraveler />} />
         </Routes>
       </Router>
-    </div>
+    </div> 
   );
 }
 
