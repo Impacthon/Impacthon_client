@@ -1,20 +1,24 @@
-import styled from "styled-components";
-import { default as logo } from "../header/logo.svg";
-import { useNavigate } from "react-router-dom";
-import { default as price } from "../header/Price.svg";
+import styled from 'styled-components';
+import { default as logo } from '../header/logo.svg';
+import { useNavigate } from 'react-router-dom';
+import { default as price } from '../header/Price.svg';
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken');
 
   return (
     <Container>
-      <Logo onClick={() => navigate("/main")} src={logo} alt="" />
+      <Logo onClick={() => navigate('/main')} src={logo} alt="" />
       <Div>
         {token ? (
           <>
-            <Info>김한비 | 여행객</Info>
+            <Info>
+              <p>김한비</p>
+              <p>| </p>
+              <p>여행객</p>
+            </Info>
             <img src={price} />
             <Money>2000</Money>
           </>
@@ -22,12 +26,12 @@ const Header = () => {
           <>
             <LoginBtn
               onClick={() => {
-                navigate("/login");
+                navigate('/login');
               }}
             >
               로그인
             </LoginBtn>
-            <SignUpBtn onClick={() => navigate("/signup")}>회원가입</SignUpBtn>
+            <SignUpBtn onClick={() => navigate('/signup')}>회원가입</SignUpBtn>
           </>
         )}
       </Div>
@@ -41,18 +45,25 @@ const Money = styled.div`
   font-size: 24px;
   font-weight: 400;
   line-height: 30px;
-  margin-top: 10px;
 `;
 
 const Info = styled.div`
   display: flex;
-  color: #0a40de;
+  gap: 10px;
   text-align: center;
   font-family: Pretendard;
   font-size: 24px;
   font-weight: 600;
-  margin-top: 12px;
-  margin-right: 30px;
+  > p {
+    margin: 0;
+    word-break: keep-all;
+  }
+  > p:nth-child(2) {
+    color: #999;
+  }
+  > p:last-child {
+    color: #0a40de;
+  }
 `;
 
 const Logo = styled.img``;
@@ -71,6 +82,8 @@ const Container = styled.div`
 const Div = styled.div`
   display: flex;
   margin-left: auto;
+  align-items: center;
+  gap: 10px;
 `;
 
 const LoginBtn = styled.button`
