@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      {/* <Point/> */}
       <Router>
         <Routes>
           <Route path="/login" element={<Signin />} />

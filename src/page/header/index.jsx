@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { default as logo } from '../header/logo.svg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { default as price } from '../header/Price.svg';
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
               <p>여행객</p>
             </Info>
             <img src={price} />
-            <Money>2000</Money>
+            <Money onClick={() => navigate('/point')}>2000</Money>
           </>
         ) : (
           <>
@@ -45,6 +45,7 @@ const Money = styled.div`
   font-size: 24px;
   font-weight: 400;
   line-height: 30px;
+  cursor: pointer;
 `;
 
 const Info = styled.div`

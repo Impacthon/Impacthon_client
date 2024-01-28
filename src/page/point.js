@@ -104,4 +104,6 @@ const Button = styled.button`
   border: none;
   background-color: #0a40de;
   color: #fff;
+
+  cursor: pointer;
 `;

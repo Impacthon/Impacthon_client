@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { default as line } from "../main/Line.svg";
-import { default as componentImg } from "../main/componentImg.svg";
-import { default as price } from "../header/Price.svg";
-const MainComponents = ({ myname, gender, introduce, tag }) => {
+import styled from 'styled-components';
+import { default as line } from '../main/Line.svg';
+import { default as componentImg } from '../main/componentImg.svg';
+import { default as price } from '../header/Price.svg';
+const MainComponents = ({ myname, gender, introduce, tag, link }) => {
   return (
     <Container>
-      <img src={componentImg} />
+      <AAA src={link} />
       <Div>
         <Name>{myname}</Name>
         <img src={line} />
@@ -23,7 +23,11 @@ const MainComponents = ({ myname, gender, introduce, tag }) => {
     </Container>
   );
 };
-
+const AAA = styled.img`
+  width: 95%;
+  height: 230px;
+  
+`;
 const MoneyLayer = styled.div`
   display: flex;
 `;
@@ -60,7 +64,8 @@ const HashTag = styled.div`
 const Container = styled.div`
   margin-right: auto;
   background: #ffff;
-  height: 350px;
+  width: 380px;
+  height: 400px;
   border-radius: 8px;
   &:hover {
     background: #f7f7f7;

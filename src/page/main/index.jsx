@@ -1,24 +1,25 @@
-import styled from "styled-components";
-import Header from "../header";
-import MainComponents from "./mainComponent";
-import { SearchIcon } from "react-router-dom";
-import { ProfileList } from "../constance";
+import styled from 'styled-components';
+import Header from '../header';
+import MainComponents from './mainComponent';
+import { SearchIcon, useNavigate } from 'react-router-dom';
+import { ProfileList } from '../constance';
+import { useState } from 'react';
 
 const Main = () => {
+  const [a, setA] = useState('');
   return (
     <>
       <Container>
         <Title>“로픽, 여행 계획이 고민이라면?”</Title>
         <SubTitle>
           바쁜 직장인을 위한 일반인 현지 가이드 매칭 서비스! <br />
-          키워드로 손쉽게원하는 여행을 계획하고 현지인의 눈으로 특별한 경험을
-          만나보세요.
+          키워드로 손쉽게원하는 여행을 계획하고 현지인의 눈으로 특별한 경험을 만나보세요.
         </SubTitle>
         <SearchLayer>
-          <Input placeholder="어떤 여행을 원하시나요?" />
+          <Input placeholder="어떤 여행을 원하시나요?" value={a} onChange={(e) => setA(e.target.value)} />
         </SearchLayer>
         <MainLayer>
-          {ProfileList.map((item, idx) => (
+          {ProfileList.filter((v, idx) => v.introduce.includes(a)).map((item, idx) => (
             <MainComponents key={idx} {...item} />
           ))}
         </MainLayer>
@@ -54,9 +55,9 @@ const HashTag = styled.div`
 `;
 
 const MainLayer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 100%;
-  flex-wrap: wrap;
   gap: 10px;
 `;
 const Container = styled.div`
@@ -91,5 +92,6 @@ const Title = styled.div`
   font-family: Pretendard;
   font-size: 32px;
   font-weight: 900;
+  width: 85vw;
 `;
 export default Main;
