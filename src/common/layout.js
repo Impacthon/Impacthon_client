@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "../page/header";
 import { Outlet } from "react-router-dom";
+import { Chat } from "./chat";
 
 export const Layout = () => {
   return (
@@ -9,6 +10,7 @@ export const Layout = () => {
       <Content>
         <Outlet />
       </Content>
+      <Chat />
     </Container>
   );
 };
@@ -16,9 +18,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   width: 100vw;
 `;
 
 const Content = styled.div`
-  width: 90%;
+  flex: 1;
+  overflow-y: auto;
 `;
