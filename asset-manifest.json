@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/static/js/main.b5f5c5a3.js",
+    "static/media/componentImg.svg": "/static/media/componentImg.7a7c6b2e454dfa34e5e2bf87d0d87291.svg",
+    "static/media/profile.svg": "/static/media/profile.33b305bd3fe58649d7fa61c66e47c57e.svg",
+    "static/media/LoginImg.png": "/static/media/LoginImg.cf3be87885cfa238e31d.png",
+    "static/media/Price.svg": "/static/media/Price.21d79665f535a81dd22b341fb338b65f.svg",
+    "static/media/logo.svg": "/static/media/logo.60bc33fd48728536cfa1e509744b1e71.svg",
+    "index.html": "/index.html",
+    "static/media/Line.svg": "/static/media/Line.baa559a59f9a15f28250e059b2468b57.svg",
+    "main.b5f5c5a3.js.map": "/static/js/main.b5f5c5a3.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b5f5c5a3.js"
+  ]
+}
